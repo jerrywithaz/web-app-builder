@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import If from 'components/If';
+import { If } from '@jerrywithaz/react-conditionals';
 import LoadedApplication from './components/LoadedApplication';
 import ErroredApplication from './components/ErroredApplication';
 import LoadingApplication from './components/LoadingApplication';
@@ -19,10 +19,10 @@ const ApplicationView: FunctionComponent<ApplicationViewProps> = ({
             <If condition={loading}>
                 <LoadingApplication />
             </If>
-            <If data={error} render={(error) => (
+            <If data={error} render={error => (
                 <ErroredApplication error={error} />
             )} />
-            <If data={data} render={(data) => (
+            <If data={data} render={data => (
                 <LoadedApplication data={data} url={match.url} />
             )} />
         </Styled.ApplicationView>

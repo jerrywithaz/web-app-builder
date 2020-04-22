@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
+import { If } from '@jerrywithaz/react-conditionals';
 import { HomeViewProps, HomeViewQueryData } from './HomeView.types';
 import { HOME_VIEW_QUERY } from './HomeView.graphql';
 
@@ -12,7 +13,7 @@ const HomeView: FunctionComponent<HomeViewProps> = () => {
 
     return (
         <Styled.HomeView>
-            {data && (
+            <If data={data} render={data => (
                 <React.Fragment>
                     <div>
                         {data.applications.map(({ name, id }) => (
@@ -23,11 +24,12 @@ const HomeView: FunctionComponent<HomeViewProps> = () => {
                             </div>
                         ))}
                     </div>
-                    {applicationId && (
-                        <Styled.HomeViewApplicationViewer src={`/application/${applicationId.replace("application-", "")}`} />
-                    )}
+                    <If data={applicationId} render={applicationId => (
+                        <Styled.HomeViewApplicationViewer 
+                            src={`/application/${applicationId.replace("application-", "")}`} />
+                    )}/>
                 </React.Fragment>
-            )}
+            )}/>
         </Styled.HomeView>
     );
 
