@@ -1,0 +1,37 @@
+{
+    "companies": [],
+    "users": [],
+    "applications": [
+        {
+            "id": "application-5189ab43-8061-4b5f-8ed2-cb301c6c6714",
+            "name": "Wheatley",
+            "routes": [
+                {
+                    "id": "route-d1d0b0cb-22a5-48a6-a4c7-eb8ae42e24fb",
+                    "title": "Login",
+                    "path": "/",
+                    "secure": false,
+                    "exact": true,
+                    "component": "pages/LoginPage"
+                },
+                {
+                    "id": "route-1a9528b7-d44d-4e50-9137-eba8e3b554e6",
+                    "title": "Customers",
+                    "path": "/customers",
+                    "secure": true,
+                    "exact": true,
+                    "component": "pages/LoginPage"
+                },
+                {
+                    "id": "route-4211dbf7-9b90-4727-a4ec-58c1a852571bs",
+                    "title": "Customer",
+                    "path": "/customers/:customerId",
+                    "secure": true,
+                    "exact": true,
+                    "component": "pages/LoginPage"
+                }
+            ]
+        }
+    ],
+    "components": []
+}
