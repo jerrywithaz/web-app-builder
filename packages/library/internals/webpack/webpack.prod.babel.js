@@ -1,4 +1,6 @@
+// Important modules this config uses
 const path = require('path');
+const glob = require('glob');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -7,11 +9,14 @@ module.exports = require('./webpack.base.babel')({
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
-  entry: path.join(process.cwd(), 'src/index.ts'),
+  entry: [
+    ...glob.sync('./app/**/*.loadable.ts'),
+    path.join(process.cwd(), 'app/index.ts'),
+  ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
@@ -68,7 +73,6 @@ module.exports = require('./webpack.base.babel')({
   },
 
   plugins: [
-
     new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
@@ -87,5 +91,4 @@ module.exports = require('./webpack.base.babel')({
     assetFilter: assetFilename =>
       !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
-
 });

@@ -3,8 +3,6 @@
  */
 
 const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
@@ -18,7 +16,7 @@ module.exports = require('./webpack.base.babel')({
 
   // Add hot reloading in development
   entry: [
-    path.join(process.cwd(), 'src/index.ts'),
+    path.join(process.cwd(), 'app/index.ts'), // Start with js/app.js
   ],
 
   // Don't use hashes in dev mode for better performance

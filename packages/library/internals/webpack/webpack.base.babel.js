@@ -125,7 +125,7 @@ module.exports = options => ({
     new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
   ]),
   resolve: {
-    modules: ['node_modules', 'src'],
+    modules: ['node_modules', 'app'],
     extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     alias: {
       'react-dom': '@hot-loader/react-dom',

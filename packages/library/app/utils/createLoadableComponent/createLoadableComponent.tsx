@@ -1,11 +1,13 @@
 import React, { lazy, Suspense, ComponentType } from 'react';
-import { LoadableComponentProps, CreateLoadableComponentOptions } from './createLoadableComponent.types';
+import {
+  LoadableComponentProps,
+  CreateLoadableComponentOptions,
+} from './createLoadableComponent.types';
 
 function createLoadableComponent<ComponentProps = {}>({
   importFunc,
-  fallback = { fallback: null }
+  fallback = { fallback: null },
 }: CreateLoadableComponentOptions<ComponentProps>) {
-
   const LazyComponent = lazy<ComponentType<ComponentProps>>(importFunc);
 
   const LoadableComponent = (props: LoadableComponentProps<ComponentProps>) => (
@@ -15,7 +17,6 @@ function createLoadableComponent<ComponentProps = {}>({
   );
 
   return LoadableComponent;
-  
-};
+}
 
 export default createLoadableComponent;
